@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.0.23] - 2026-09-28
+
+### Changed
+- The repository moved to the GitHub username `giorgioparri` (previously `naked-head`) and the container images are now published as `ghcr.io/giorgioparri/ha-app-bambuddy-{arch}`. Nothing to do — this update pulls from the new location on its own, and GitHub redirects the old repository URL. If you are adding the repository for the first time, use `https://github.com/giorgioparri/homeassistant-addons`.
+
 ## [1.0.22] - 2026-09-24
 
 ### Changed
@@ -212,17 +217,17 @@ Shortly after the 1.0.11 release, a bug was found in the automatic timezone dete
 
 ### Other changes
 
-- Bind on `::` instead of `0.0.0.0` so BamBuddy is reachable over IPv6 in addition to IPv4 by @grischard in https://github.com/naked-head/homeassistant-addons/pull/10
-- Detect timezone automatically from Home Assistant at startup instead of a manual `timezone` option (falls back to UTC if it can't be retrieved) by @grischard in https://github.com/naked-head/homeassistant-addons/pull/11
+- Bind on `::` instead of `0.0.0.0` so BamBuddy is reachable over IPv6 in addition to IPv4 by @grischard in https://github.com/giorgioparri/homeassistant-addons/pull/10
+- Detect timezone automatically from Home Assistant at startup instead of a manual `timezone` option (falls back to UTC if it can't be retrieved) by @grischard in https://github.com/giorgioparri/homeassistant-addons/pull/11
 - `use_system_trust_store` now actually installs the certificate into the container's trust store (new `certfile` option), instead of only setting an environment variable with no effect.
 - Added a Supervisor `watchdog` so the App restarts automatically if BamBuddy stops responding.
 - Added `ca-certificates` package to the image (required for the certificate installation above).
 
 ### New Contributors
 
-- @grischard made their first contribution in https://github.com/naked-head/homeassistant-addons/pull/10
+- @grischard made their first contribution in https://github.com/giorgioparri/homeassistant-addons/pull/10
 
-**Full Changelog**: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.10...bambuddy-v1.0.11
+**Full Changelog**: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.10...bambuddy-v1.0.11
 
 ## [1.0.10] - 2026-07-12
 
@@ -285,27 +290,28 @@ Shortly after the 1.0.11 release, a bug was found in the automatic timezone dete
 - Configurable bind address for multi-IP setups (e.g. IP alias to avoid port conflicts)
 - Configurable timezone and log level
 
-[Unreleased]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.22...HEAD
-[1.0.22]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.21...bambuddy-v1.0.22
-[1.0.21]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.20...bambuddy-v1.0.21
-[1.0.20]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.19...bambuddy-v1.0.20
-[1.0.19]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.18...bambuddy-v1.0.19
-[1.0.18]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.17...bambuddy-v1.0.18
-[1.0.17]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.16...bambuddy-v1.0.17
-[1.0.16]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.15...bambuddy-v1.0.16
-[1.0.15]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.14...bambuddy-v1.0.15
-[1.0.14]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.13...bambuddy-v1.0.14
-[1.0.13]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.12...bambuddy-v1.0.13
-[1.0.12]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.11...bambuddy-v1.0.12
-[1.0.11]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.10...bambuddy-v1.0.11
-[1.0.10]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.9...bambuddy-v1.0.10
-[1.0.9]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.8...bambuddy-v1.0.9
-[1.0.8]: https://github.com/naked-head/homeassistant-addons/compare/bambuddy-v1.0.7...bambuddy-v1.0.8
-[1.0.7]: https://github.com/naked-head/homeassistant-addons/commits/main/bambuddy?before=bambuddy-v1.0.8
-[1.0.6]: https://github.com/naked-head/homeassistant-addons/commits/main/bambuddy
-[1.0.5]: https://github.com/naked-head/homeassistant-addons/commits/main/bambuddy
-[1.0.4]: https://github.com/naked-head/homeassistant-addons/commits/main/bambuddy
-[1.0.3]: https://github.com/naked-head/homeassistant-addons/commits/main/bambuddy
-[1.0.2]: https://github.com/naked-head/homeassistant-addons/commits/main/bambuddy
-[1.0.1]: https://github.com/naked-head/homeassistant-addons/commits/main/bambuddy
-[1.0.0]: https://github.com/naked-head/homeassistant-addons/commits/main/bambuddy
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.23...HEAD
+[1.0.23]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.22...bambuddy-v1.0.23
+[1.0.22]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.21...bambuddy-v1.0.22
+[1.0.21]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.20...bambuddy-v1.0.21
+[1.0.20]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.19...bambuddy-v1.0.20
+[1.0.19]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.18...bambuddy-v1.0.19
+[1.0.18]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.17...bambuddy-v1.0.18
+[1.0.17]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.16...bambuddy-v1.0.17
+[1.0.16]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.15...bambuddy-v1.0.16
+[1.0.15]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.14...bambuddy-v1.0.15
+[1.0.14]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.13...bambuddy-v1.0.14
+[1.0.13]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.12...bambuddy-v1.0.13
+[1.0.12]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.11...bambuddy-v1.0.12
+[1.0.11]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.10...bambuddy-v1.0.11
+[1.0.10]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.9...bambuddy-v1.0.10
+[1.0.9]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.8...bambuddy-v1.0.9
+[1.0.8]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.7...bambuddy-v1.0.8
+[1.0.7]: https://github.com/giorgioparri/homeassistant-addons/commits/main/bambuddy?before=bambuddy-v1.0.8
+[1.0.6]: https://github.com/giorgioparri/homeassistant-addons/commits/main/bambuddy
+[1.0.5]: https://github.com/giorgioparri/homeassistant-addons/commits/main/bambuddy
+[1.0.4]: https://github.com/giorgioparri/homeassistant-addons/commits/main/bambuddy
+[1.0.3]: https://github.com/giorgioparri/homeassistant-addons/commits/main/bambuddy
+[1.0.2]: https://github.com/giorgioparri/homeassistant-addons/commits/main/bambuddy
+[1.0.1]: https://github.com/giorgioparri/homeassistant-addons/commits/main/bambuddy
+[1.0.0]: https://github.com/giorgioparri/homeassistant-addons/commits/main/bambuddy

@@ -32,8 +32,8 @@ when that happens. The safe order is:
    **Actions → BamBuddy Builder → Run workflow**, passing the new version in
    the `version` input. This publishes the image ahead of the merge.
 3. Verify both images exist on GHCR:
-   - `ghcr.io/naked-head/ha-app-bambuddy-amd64:<version>`
-   - `ghcr.io/naked-head/ha-app-bambuddy-aarch64:<version>`
+   - `ghcr.io/giorgioparri/ha-app-bambuddy-amd64:<version>`
+   - `ghcr.io/giorgioparri/ha-app-bambuddy-aarch64:<version>`
 4. Merge the PR to `main`. The builder runs again on push (idempotent — it
    re-tags the same content), and users are now offered a version whose image
    is already pullable.

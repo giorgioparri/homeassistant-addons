@@ -27,8 +27,8 @@ ARG TARGETARCH
 
 LABEL org.opencontainers.image.title="Home Assistant App: BamBuddy"
 LABEL org.opencontainers.image.description="Self-hosted command center for Bambu Lab printers. No cloud required."
-LABEL org.opencontainers.image.source="https://github.com/naked-head/homeassistant-addons"
-LABEL org.opencontainers.image.authors="naked-head"
+LABEL org.opencontainers.image.source="https://github.com/giorgioparri/homeassistant-addons"
+LABEL org.opencontainers.image.authors="giorgioparri"
 LABEL org.opencontainers.image.licenses="MIT AND AGPL-3.0-only"
 
 WORKDIR /app
