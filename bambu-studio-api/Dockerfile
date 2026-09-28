@@ -57,8 +57,8 @@ ARG BASHIO_VERSION=v0.16.2
 ARG TARGETARCH
 LABEL org.opencontainers.image.title="Home Assistant App: Bambu Studio API"
 LABEL org.opencontainers.image.description="Headless Bambu Studio CLI as a REST API. Sidecar for Bambuddy server-side slicing."
-LABEL org.opencontainers.image.source="https://github.com/naked-head/homeassistant-addons"
-LABEL org.opencontainers.image.authors="naked-head"
+LABEL org.opencontainers.image.source="https://github.com/giorgioparri/homeassistant-addons"
+LABEL org.opencontainers.image.authors="giorgioparri"
 LABEL org.opencontainers.image.licenses="MIT AND AGPL-3.0-only"
 # Runtime dependencies: BambuStudio's webkit2gtk-4.0 stack + Node 22 + the
 # small set of tools we need for s6/bashio bootstrap.

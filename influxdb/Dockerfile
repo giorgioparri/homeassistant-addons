@@ -20,8 +20,8 @@ ARG TARGETARCH
 
 LABEL org.opencontainers.image.title="Home Assistant App: InfluxDB"
 LABEL org.opencontainers.image.description="InfluxDB v2.x time-series database, for Home Assistant long-term history and any other time-series data."
-LABEL org.opencontainers.image.source="https://github.com/naked-head/homeassistant-addons"
-LABEL org.opencontainers.image.authors="naked-head"
+LABEL org.opencontainers.image.source="https://github.com/giorgioparri/homeassistant-addons"
+LABEL org.opencontainers.image.authors="giorgioparri"
 LABEL org.opencontainers.image.licenses="MIT"
 
 # jq/curl/ca-certificates/xz-utils are only needed to bootstrap s6-overlay
