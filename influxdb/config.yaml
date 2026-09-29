@@ -1,14 +1,14 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: InfluxDB
-version: "2.8.0-1"
-url: "https://github.com/naked-head/homeassistant-addons"
+version: "2.8.0-2"
+url: "https://github.com/giorgioparri/homeassistant-addons"
 slug: influxdb
 stage: stable
 description: InfluxDB v2.x time-series database, for Home Assistant long-term history and any other time-series data.
 # Pre-built image published by .github/workflows/influxdb-build.yml. HA
 # will pull this first and only fall back to building the Dockerfile
 # locally if the pull fails (e.g. before the first CI run completes).
-image: "ghcr.io/naked-head/ha-app-influxdb-{arch}"
+image: "ghcr.io/giorgioparri/ha-app-influxdb-{arch}"
 arch:
   - amd64
   - aarch64

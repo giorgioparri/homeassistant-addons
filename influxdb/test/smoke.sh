@@ -3,7 +3,7 @@ set -uo pipefail
 cd "$(dirname "$0")" || exit 1
 
 NET=influxdb-test
-IMG="${INFLUXDB_IMAGE:-ghcr.io/naked-head/ha-app-influxdb-amd64:latest}"
+IMG="${INFLUXDB_IMAGE:-ghcr.io/giorgioparri/ha-app-influxdb-amd64:latest}"
 
 if ss -lnt | grep -q ':8086 '; then
   echo "✘ port 8086 in use — close tunnel/container first"; exit 1

@@ -5,9 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.8.0-2] - 2026-09-29
+
 ### Added
-- The App documentation now states the upstream license: InfluxDB OSS is MIT,
-  same as the packaging in this repository.
+- The App documentation now states the upstream license: InfluxDB OSS is MIT, same as the packaging in this repository.
+
+### Changed
+- The repository moved to the GitHub username `giorgioparri` (previously `naked-head`) and the container image is now published as `ghcr.io/giorgioparri/ha-app-influxdb-{arch}`. Nothing to do — this update pulls from the new location on its own, and GitHub redirects the old repository URL. If you are adding the repository for the first time, use `https://github.com/giorgioparri/homeassistant-addons`.
 
 ## [2.8.0-1] - 2026-07-22
 
@@ -30,7 +34,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   skip`, default).
 - Support for `influx backup` / `influx restore` from inside the
   container.
-- Pre-built image published to `ghcr.io/naked-head/ha-app-influxdb-{arch}`
+- Pre-built image published to `ghcr.io/giorgioparri/ha-app-influxdb-{arch}`
   by `.github/workflows/influxdb-build.yml`, with fallback to a local
   Dockerfile build.
 - Supported architectures: amd64, aarch64.
@@ -44,5 +48,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   (`/data/influxd.sqlite`); a copy that skipped it would silently lose
   notebooks and annotations, not the time-series data itself.
 
-[Unreleased]: https://github.com/naked-head/homeassistant-addons/compare/influxdb-v2.8.0-1...HEAD
-[2.8.0-1]: https://github.com/naked-head/homeassistant-addons/releases/tag/influxdb-v2.8.0-1
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/influxdb-v2.8.0-2...HEAD
+[2.8.0-2]: https://github.com/giorgioparri/homeassistant-addons/compare/influxdb-v2.8.0-1...influxdb-v2.8.0-2
+[2.8.0-1]: https://github.com/giorgioparri/homeassistant-addons/releases/tag/influxdb-v2.8.0-1

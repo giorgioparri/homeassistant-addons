@@ -16,8 +16,8 @@ bashio on top of the InfluxDB base image on the user's own hardware).
    aarch64, **and makes the new version immediately visible and
    installable to everyone tracking this repository** (see note below)
 4. **Wait for the builder to finish** and verify both tags exist:
-   - `ghcr.io/naked-head/ha-app-influxdb-amd64:<version>`
-   - `ghcr.io/naked-head/ha-app-influxdb-aarch64:<version>`
+   - `ghcr.io/giorgioparri/ha-app-influxdb-amd64:<version>`
+   - `ghcr.io/giorgioparri/ha-app-influxdb-aarch64:<version>`
 5. Tag the merged commit, for your own reference (see "Tagging" below)
 
 Note the gap between steps 3 and 4: merging publishes the new `version:`
@@ -47,8 +47,8 @@ why there's no real staging step once `main` is updated.
 
 ## Verify the images were published
 
-    docker pull ghcr.io/naked-head/ha-app-influxdb-amd64:2.8.0-1
-    docker pull ghcr.io/naked-head/ha-app-influxdb-aarch64:2.8.0-1
+    docker pull ghcr.io/giorgioparri/ha-app-influxdb-amd64:2.8.0-1
+    docker pull ghcr.io/giorgioparri/ha-app-influxdb-aarch64:2.8.0-1
 
 If either pull fails, wait — the builder may still be running for that
 architecture (both jobs need to finish, not just the first one to return).
