@@ -3,7 +3,7 @@ set -uo pipefail
 cd "$(dirname "$0")" || exit 1
 
 NET=bsa-test
-IMG="${BSA_IMAGE:-ghcr.io/naked-head/ha-app-bambu-studio-api-amd64:latest}"
+IMG="${BSA_IMAGE:-ghcr.io/giorgioparri/ha-app-bambu-studio-api-amd64:latest}"
 
 if ss -lnt | grep -q ':3001 '; then
   echo "✘ port 3001 in use — close tunnel/container first"; exit 1

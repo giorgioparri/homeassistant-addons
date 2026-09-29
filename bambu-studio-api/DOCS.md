@@ -4,7 +4,7 @@ This App runs the `bambu-studio-api` sidecar described in the
 [Bambuddy slicer-api documentation](https://wiki.bambuddy.cool/features/slicer-api/).
 It exposes a REST API that Bambuddy (or any compatible client) can call to slice STL / STEP / 3MF files server-side, without a desktop slicer install.
 
-This App is part of the [naked-head/homeassistant-addons](https://github.com/naked-head/homeassistant-addons)
+This App is part of the [giorgioparri/homeassistant-addons](https://github.com/giorgioparri/homeassistant-addons)
 collection, forked from [griffinmartin/ha-app-bambu-studio-api](https://github.com/griffinmartin/ha-app-bambu-studio-api).
 
 ---
@@ -82,7 +82,7 @@ data/
 ## Bambu Studio Version
 
 The Bambu Studio AppImage version is pinned at **image build time** via the `BAMBU_VERSION` build-arg in the App's Dockerfile.
-Bambu Studio version updates are handled **automatically**: a daily GitHub Actions workflow checks for new [BambuStudio releases](https://github.com/bambulab/BambuStudio/releases) and opens a Pull Request against [naked-head/homeassistant-addons](https://github.com/naked-head/homeassistant-addons) when a newer version is available. Once the PR is merged, a new App image is built and published automatically, and Home Assistant will offer the update through the normal App update mechanism.
+Bambu Studio version updates are handled **automatically**: a daily GitHub Actions workflow checks for new [BambuStudio releases](https://github.com/bambulab/BambuStudio/releases) and opens a Pull Request against [giorgioparri/homeassistant-addons](https://github.com/giorgioparri/homeassistant-addons) when a newer version is available. Once the PR is merged, a new App image is built and published automatically, and Home Assistant will offer the update through the normal App update mechanism.
 To upgrade Bambu Studio you have to update the App itself (a new release that bumps the build-arg and the App `version`).
 
 ---
@@ -124,14 +124,14 @@ This App packages software published by others, under their own licenses:
 
 The packaging in this repository — Dockerfile, service scripts, configuration
 and this documentation — is MIT licensed and lives at
-[naked-head/homeassistant-addons](https://github.com/naked-head/homeassistant-addons).
+[giorgioparri/homeassistant-addons](https://github.com/giorgioparri/homeassistant-addons).
 
 ---
 
 ## Support
 
 For issues with the **App packaging itself**:
-<https://github.com/naked-head/homeassistant-addons/issues>
+<https://github.com/giorgioparri/homeassistant-addons/issues>
 
 For issues with the **wrapper** or the **Bambu Studio CLI**, file upstream:
 
