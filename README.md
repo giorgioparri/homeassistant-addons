@@ -9,7 +9,7 @@ A collection of Home Assistant apps.
 
 1. Navigate to **Settings → Apps → App Store** in Home Assistant.
 2. Click the three-dot menu in the top right and select **Repositories**.
-3. Add the following URL: `https://github.com/naked-head/homeassistant-addons`
+3. Add the following URL: `https://github.com/giorgioparri/homeassistant-addons`
 4. Find the app you want in the store and click **Install**.
 
 ## Apps
