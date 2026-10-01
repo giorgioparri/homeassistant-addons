@@ -4,7 +4,7 @@ This App runs **InfluxDB OSS 2.8.0** (2.x series) as a native Home Assistant
 Supervisor App. It fills the gap left by `hassio-addons/addon-influxdb`,
 which only covers InfluxDB v1.x and is no longer maintained.
 
-This App is part of the [`naked-head/homeassistant-addons`](https://github.com/naked-head/homeassistant-addons) collection.
+This App is part of the [`giorgioparri/homeassistant-addons`](https://github.com/giorgioparri/homeassistant-addons) collection.
 
 ---
 
@@ -250,7 +250,7 @@ This App packages [InfluxDB OSS](https://github.com/influxdata/influxdb),
 published by InfluxData under the **MIT** license. The packaging in this
 repository — Dockerfile, service scripts, configuration and this documentation
 — is MIT licensed too and lives at
-[naked-head/homeassistant-addons](https://github.com/naked-head/homeassistant-addons).
+[giorgioparri/homeassistant-addons](https://github.com/giorgioparri/homeassistant-addons).
 
 ---
 

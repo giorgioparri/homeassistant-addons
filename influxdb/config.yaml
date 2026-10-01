@@ -1,6 +1,6 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: InfluxDB
-version: "2.8.0-1"
+version: "2.8.0-2"
 url: "https://github.com/giorgioparri/homeassistant-addons"
 slug: influxdb
 stage: stable

@@ -10,7 +10,7 @@ long-term history (via the `influxdb:` integration) or any other time-series
 data. Fills the gap left by `hassio-addons/addon-influxdb`, which only
 covers InfluxDB v1.x and is no longer maintained.
 
-This app is part of the [`naked-head/homeassistant-addons`](https://github.com/naked-head/homeassistant-addons) collection.
+This app is part of the [`giorgioparri/homeassistant-addons`](https://github.com/giorgioparri/homeassistant-addons) collection.
 
 ---
 
@@ -25,13 +25,13 @@ This app is part of the [`naked-head/homeassistant-addons`](https://github.com/n
 
 ### Via button (recommended)
 
-[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https://github.com/naked-head/homeassistant-addons)
+[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https://github.com/giorgioparri/homeassistant-addons)
 
 ### Manual
 
 1. In Home Assistant, go to **Settings → Apps → App Store**.
 2. Click the three-dot menu → **Repositories**.
-3. Add `https://github.com/naked-head/homeassistant-addons`.
+3. Add `https://github.com/giorgioparri/homeassistant-addons`.
 4. Find **InfluxDB** in the store and click **Install**.
 
 ---
@@ -64,7 +64,7 @@ opens `http://<host>:8086` directly.
 
 - [Full documentation](DOCS.md)
 - [InfluxDB OSS v2 documentation](https://docs.influxdata.com/influxdb/v2/)
-- [App issues](https://github.com/naked-head/homeassistant-addons/issues)
+- [App issues](https://github.com/giorgioparri/homeassistant-addons/issues)
 
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
