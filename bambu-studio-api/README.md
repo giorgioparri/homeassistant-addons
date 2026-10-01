@@ -12,7 +12,7 @@ See the [Bambuddy slicer-api docs](https://wiki.bambuddy.cool/features/slicer-ap
 for how the sidecar fits into the broader workflow.
 
 > **Forked from** [`griffinmartin/ha-app-bambu-studio-api`](https://github.com/griffinmartin/ha-app-bambu-studio-api).
-> This repository is part of the [`naked-head/homeassistant-addons`](https://github.com/naked-head/homeassistant-addons)
+> This repository is part of the [`giorgioparri/homeassistant-addons`](https://github.com/giorgioparri/homeassistant-addons)
 > collection alongside the [BamBuddy add-on](../homeassistant-addon/).
 
 ![amd64 only](https://img.shields.io/badge/amd64-yes-green.svg)
@@ -34,13 +34,13 @@ for how the sidecar fits into the broader workflow.
 
 ### Via button (recommended)
 
-[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https://github.com/naked-head/homeassistant-addons)
+[![Add Repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https://github.com/giorgioparri/homeassistant-addons)
 
 ### Manual
 
 1. In Home Assistant, go to **Settings → Add-ons → Add-on Store**.
 2. Click the three-dot menu → **Repositories**.
-3. Add `https://github.com/naked-head/homeassistant-addons`.
+3. Add `https://github.com/giorgioparri/homeassistant-addons`.
 4. Find **Bambu Studio API** in the store and click **Install**.
 
 The first install takes **5–10 minutes** because the add-on downloads the
