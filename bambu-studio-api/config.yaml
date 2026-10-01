@@ -1,14 +1,14 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration#add-on-config
 name: Bambu Studio API
-version: "0.1.10"
-url: "https://github.com/naked-head/homeassistant-addons"
+version: "0.1.11"
+url: "https://github.com/giorgioparri/homeassistant-addons"
 slug: bambu_studio_api
 stage: stable
 description: Headless Bambu Studio CLI as a REST API. Sidecar for Bambuddy server-side slicing.
 # Pre-built image published by .github/workflows/builder.yml. HA will pull
 # this first and only fall back to building the Dockerfile locally if the
 # pull fails (e.g. before the first CI run completes).
-image: "ghcr.io/naked-head/ha-app-bambu-studio-api-{arch}"
+image: "ghcr.io/giorgioparri/ha-app-bambu-studio-api-{arch}"
 arch:
   - amd64
 init: false

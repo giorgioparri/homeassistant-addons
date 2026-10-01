@@ -5,20 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.11] - 2026-09-29
+
 ### Added
-- The App documentation now states the upstream licenses: the wrapper is
-  AGPL-3.0 and its source is linked from `DOCS.md`, while the Bambu Studio CLI
-  follows Bambu Lab's own terms. The packaging in this repository stays MIT.
-- The image now carries an OCI license label, `MIT AND AGPL-3.0-only`,
-  covering both the MIT packaging and the AGPL-3.0 wrapper it ships.
+- The App documentation now states the upstream licenses: the wrapper is AGPL-3.0 and its source is linked from `DOCS.md`, while the Bambu Studio CLI follows Bambu Lab's own terms. The packaging in this repository stays MIT.
+- The image now carries an OCI license label, `MIT AND AGPL-3.0-only`, covering both the MIT packaging and the AGPL-3.0 wrapper it ships.
 
 ### Fixed
-- The link to the upstream fork pointed at a repository that does not exist
-  (`ha-app-bambu-stdio-api`), so the attribution led nowhere.
+- The link to the upstream fork pointed at a repository that does not exist (`ha-app-bambu-stdio-api`), so the attribution led nowhere.
 
 ### Changed
-- Documentation uses "App" throughout, following Home Assistant's 2026.2
-  rename of add-ons.
+- The repository moved to the GitHub username `giorgioparri` (previously `naked-head`) and the container image is now published as `ghcr.io/giorgioparri/ha-app-bambu-studio-api-{arch}`. Nothing to do — this update pulls from the new location on its own, and GitHub redirects the old repository URL. If you are adding the repository for the first time, use `https://github.com/giorgioparri/homeassistant-addons`.
+- Documentation uses "App" throughout, following Home Assistant's 2026.2 rename of add-ons.
 
 ## [0.1.10] - 2026-08-21
 Bump Bambu Studio from 02.08.02.60 to 02.08.02.61.
@@ -47,6 +45,7 @@ Bump Bambu Studio from 02.07.01.62 to 02.08.02.60.
 ## [0.1.3]
 - Fork from https://github.com/griffinmartin/ha-app-bambu-studio-api.
 
-[Unreleased]: https://github.com/naked-head/homeassistant-addons/compare/bambu-studio-api-v0.1.10...HEAD
-[0.1.10]: https://github.com/naked-head/homeassistant-addons/compare/bambu-studio-api-v0.1.9...bambu-studio-api-v0.1.10
-[0.1.9]: https://github.com/naked-head/homeassistant-addons/compare/bambu-studio-api-v0.1.8...bambu-studio-api-v0.1.9
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.11...HEAD
+[0.1.11]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.10...bambu-studio-api-v0.1.11
+[0.1.10]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.9...bambu-studio-api-v0.1.10
+[0.1.9]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.8...bambu-studio-api-v0.1.9

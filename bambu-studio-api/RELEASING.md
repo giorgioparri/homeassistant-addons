@@ -14,7 +14,7 @@ building the Dockerfile locally (~15 minutes on a typical HA host).
    version immediately visible and installable to everyone tracking this
    repository** (see note below)
 4. **Wait for the builder to finish** and verify the tag exists at
-   `ghcr.io/naked-head/ha-app-bambu-studio-api-amd64:<version>`
+   `ghcr.io/giorgioparri/ha-app-bambu-studio-api-amd64:<version>`
 5. Tag the merged commit, for your own reference (see "Tagging" below)
 
 Note the gap between steps 3 and 4: merging publishes the new `version:`
@@ -38,7 +38,7 @@ why there's no real staging step once `main` is updated.
 
 ## Verify the image was published
 
-    docker pull ghcr.io/naked-head/ha-app-bambu-studio-api-amd64:0.1.9
+    docker pull ghcr.io/giorgioparri/ha-app-bambu-studio-api-amd64:0.1.9
 
 If this fails, wait — the builder may still be running.
 
