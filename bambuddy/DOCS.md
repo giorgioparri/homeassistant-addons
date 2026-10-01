@@ -2,7 +2,7 @@
 
 This App wraps the official [BamBuddy](https://bambuddy.cool) Docker image as a native Home Assistant Supervisor app, providing local management of Bambu Lab printers without Bambu Cloud.
 
-This App is part of the [`naked-head/homeassistant-addons`](https://github.com/naked-head/homeassistant-addons) collection.
+This App is part of the [`giorgioparri/homeassistant-addons`](https://github.com/giorgioparri/homeassistant-addons) collection.
 
 ---
 
@@ -258,7 +258,7 @@ If you use BamBuddy's own backup feature, the resulting files are stored under `
 
 If you were running a version before 1.0.15, any backups already present in the old location are **moved** here the first time you start 1.0.15 — copied first, verified file by file, and only then removed from the data volume. Leaving a second copy behind would keep inflating your HA backups, which is exactly what this change avoids, so nothing is left over and there's nothing for you to clean up.
 
-If the migration can't be verified (a failed copy, a full disk, a read-only `/share`), nothing is deleted: the originals stay put under `backups.not-migrated` and the App log shows an error. That folder is *not* removed automatically and will keep bloating your HA backups until you deal with it — see the 1.0.15 entry in [CHANGELOG.md](https://github.com/naked-head/homeassistant-addons/blob/HEAD/bambuddy/CHANGELOG.md) for step-by-step cleanup instructions.
+If the migration can't be verified (a failed copy, a full disk, a read-only `/share`), nothing is deleted: the originals stay put under `backups.not-migrated` and the App log shows an error. That folder is *not* removed automatically and will keep bloating your HA backups until you deal with it — see the 1.0.15 entry in [CHANGELOG.md](https://github.com/giorgioparri/homeassistant-addons/blob/HEAD/bambuddy/CHANGELOG.md) for step-by-step cleanup instructions.
 
 ---
 
@@ -271,14 +271,14 @@ serves — and the complete source is available at the link above.
 
 The packaging in this repository — Dockerfile, service scripts, configuration
 and this documentation — is MIT licensed and lives at
-[naked-head/homeassistant-addons](https://github.com/naked-head/homeassistant-addons).
+[giorgioparri/homeassistant-addons](https://github.com/giorgioparri/homeassistant-addons).
 
 ---
 
 ## Support
 
 For issues with the **App packaging**:
-<https://github.com/naked-head/homeassistant-addons/issues>
+<https://github.com/giorgioparri/homeassistant-addons/issues>
 
 For issues with **BamBuddy itself**:
 - [BamBuddy wiki](https://wiki.bambuddy.cool)
