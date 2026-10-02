@@ -5,6 +5,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.0.24] - 2026-10-02
+
+### Changed
+- Updated BamBuddy to 1.2.5.7 (from 1.2.5.6). A feature release: 25 new features, 40 fixes, 29 community pull requests. The headline is post-print outcome confirmation — a finished print can now ask whether the part actually came out good, answered from the web UI, the printer card, a notification, or a 👍 / 👎 on Telegram. The File Manager gains a Column view, larger previews with zoom and fullscreen, image previews, server-side PDF thumbnails, notes and photos on library files, and Combine to 3MF. New tables and columns are added automatically. Several notifications that had a toggle but never fired now send.
+
+  Full upstream release notes: https://github.com/maziggy/bambuddy/releases/tag/v1.2.5.7
+
+- **Telegram reactions conflict with Home Assistant's Telegram integration.** If you pick Reaction (👍 / 👎) as a Telegram provider's verdict mode, BamBuddy polls that bot for reactions — and any other application polling the same bot stops receiving its messages. If the bot token you give BamBuddy is the one your Home Assistant Telegram integration already uses, your Home Assistant notifications will go quiet. Use a second bot for BamBuddy. In a group chat the bot must be an admin to see reactions at all.
+- **HMS fault severity values change.** Faults now carry the printer's own level, and the new values appear in the status response, the WebSocket, the Camera Wall and the MQTT relay. If you built Home Assistant templates or automations on those numbers, they will read differently for the same fault. Printer-error notifications also now go out for `hms[]` faults that carry a description, which almost never happened before, so expect more of them rather than fewer.
+- **Notifications that never fired now do.** Low Filament, Reorder Alert and Stock Break Alert had toggles on every provider but nothing ever sent them. If you left Low Filament on, expect one alert per assigned spool that is already low immediately after the update — and again on every restart while it stays low, which for an App means after every Home Assistant update and every backup restore. Stock alerts fire once per SKU when it reaches its reorder point.
+- **BamBuddy now fetches announcements from GitHub.** One signed file from the public `maziggy/bambuddy-notifications` repository, at startup and every six hours. Nothing about your install is sent, startup is not delayed if the fetch fails, and Settings → General → Updates turns it off entirely, in which case nothing is fetched at all.
+- Smaller behaviour changes worth knowing about: the queue now starts jobs in the order the queue page shows, which may differ from before if you mix pinned and "Any <model>" jobs; in Spoolman mode each spool's own size is used, and spools an earlier version reset with "Reset usage to 0" need re-weighing once; a P1S, P1P or X1E added by discovery before this release was saved as the wrong model and keeps it — correct it under Model in the printer card's Edit menu.
+- **Downgrading below 1.0.22 is still not possible.** This release adds tables and columns rather than removing any, so going back to 1.0.23 works. 1.0.21 and earlier remain out of reach for the reason given in the 1.0.22 entry below.
+
 ## [1.0.23] - 2026-09-28
 
 ### Changed
@@ -250,7 +264,8 @@ Shortly after the 1.0.11 release, a bug was found in the automatic timezone dete
 - Configurable bind address for multi-IP setups (e.g. IP alias to avoid port conflicts)
 - Configurable timezone and log level
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.23...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.24...HEAD
+[1.0.24]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.23...bambuddy-v1.0.24
 [1.0.23]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.22...bambuddy-v1.0.23
 [1.0.22]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.21...bambuddy-v1.0.22
 [1.0.21]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.20...bambuddy-v1.0.21
