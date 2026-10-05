@@ -107,3 +107,15 @@ EXPOSE 50000-50029/tcp
 # thing that launches the app.
 ENTRYPOINT ["/init"]
 CMD []
+
+# The upstream HEALTHCHECK probes localhost:$PORT, falling back to 8000. $PORT
+# is only exported inside the s6 run script, which a healthcheck cannot see,
+# so on a custom Web UI port it probed the wrong service for ever: the
+# Supervisor timed out on start and the watchdog restarted the App in a loop.
+# The run script writes the configured port to /run/bambuddy.port and this
+# reads it back. There is deliberately no fallback to 8000: under host
+# networking that port may answer for a different service and report healthy.
+# A missing file fails the probe, which start-period absorbs while the App
+# starts.
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD ["python", "-c", "import urllib.request as u; u.urlopen('http://localhost:%s/health' % open('/run/bambuddy.port').read().strip(), timeout=5)"]

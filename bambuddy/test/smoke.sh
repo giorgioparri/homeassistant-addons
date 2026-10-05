@@ -50,6 +50,7 @@ for f in scenarios/*.json; do
     -v "$RUNDIR/share":/share -v "$RUNDIR/media":/media \
     -e SUPERVISOR_API=http://sup-mock \
     -e SUPERVISOR_TOKEN=fake \
+    --health-interval=2s --health-start-period=30s --health-retries=2 \
     "$IMG" >/dev/null
 
   ok=0
@@ -58,6 +59,24 @@ for f in scenarios/*.json; do
     curl -sf -o /dev/null "http://127.0.0.1:$PORT/" && { ok=1; break; }
     n=$((n+1)); sleep 1
   done
+
+  # The container health check must follow the configured port too. Only the
+  # interval and retry timings are shortened above; the probe itself is the
+  # image's own HEALTHCHECK. On the custom-port scenario an image that still
+  # probes 8000 stays unhealthy here, as it did under the Supervisor.
+  h=starting
+  n=0
+  while [ $n -lt 90 ]; do
+    h=$(docker inspect --format '{{.State.Health.Status}}' bambuddy-smoke 2>/dev/null)
+    [ "$h" = healthy ] || [ "$h" = unhealthy ] && break
+    n=$((n+1)); sleep 1
+  done
+  if [ "$h" = healthy ]; then
+    echo "  ✔ container healthy"
+  else
+    echo "  ✘ container health: ${h:-unknown} (expected healthy)"
+    FAIL=1
+  fi
 
   L=$(docker logs bambuddy-smoke 2>&1 | sed 's/\x1b\[[0-9;]*m//g')
 
