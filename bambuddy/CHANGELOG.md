@@ -46,7 +46,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [1.0.21] - 2026-09-06
 
 ### Fixed
-- **Changing the Web UI port had no effect.** The port set in Configuration → Network was recorded but never read, so the App always started on 8000: the new port answered nothing, the old one kept working, and the "Open Web UI" button — which does follow the setting — pointed at a dead port. It now starts on the port you configure; clearing the field falls back to 8000. Fixes #43.
+- **Changing the Web UI port had no effect.** The port set in Configuration → Network was recorded but never read, so the App always started on 8000: the new port answered nothing, the old one kept working, and the "Open Web UI" button — which does follow the setting — pointed at a dead port. It now starts on the port you configure; clearing the field falls back to 8000. Fixes [#43](https://github.com/giorgioparri/homeassistant-addons/issues/43).
 
 ### Changed
 - Configuration → Network now lists only the Web UI port. The other ten entries were never configurable: BamBuddy fixes some internally and the Bambu Lab protocols fix the rest, and because this App uses host networking Home Assistant cannot remap them either — editing those fields did nothing. They are documented in `DOCS.md` instead, along with the FTP passive data range, which is too wide to appear in the panel at all. Nothing breaks if you had changed any of them: those values had no effect before either.
@@ -80,7 +80,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [1.0.18] - 2026-08-23
 
 ### Fixed
-- **Plate detection could not be enabled.** The toggle stayed off no matter what, on every version of this App since 1.0.0. The cause was in the image build, not in BamBuddy: the App installed OpenCV from Alpine's `py3-opencv` package, which targets the Alpine branch's own Python (3.12), while the application ran on the base image's Python 3.13. The module was there, just under an interpreter nothing used, and BamBuddy disables plate detection silently when `import cv2` fails. Fixes #9.
+- **Plate detection could not be enabled.** The toggle stayed off no matter what, on every version of this App since 1.0.0. The cause was in the image build, not in BamBuddy: the App installed OpenCV from Alpine's `py3-opencv` package, which targets the Alpine branch's own Python (3.12), while the application ran on the base image's Python 3.13. The module was there, just under an interpreter nothing used, and BamBuddy disables plate detection silently when `import cv2` fails. Fixes [#9](https://github.com/giorgioparri/homeassistant-addons/issues/9).
 
   Nothing to do on your side — update and the toggle works. If you had turned on `Require plate clear` as a workaround, you can leave it on: it is a separate safety net and still worth having.
 
