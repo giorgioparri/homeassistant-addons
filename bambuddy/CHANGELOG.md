@@ -5,6 +5,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.0.25] - 2026-10-05
+
+### Fixed
+- **The App was restarted every few minutes when the Web UI port was not 8000.** BamBuddy itself ran fine on the port you chose, but the container health check kept probing port 8000, so the Supervisor logged a start timeout after 120 seconds and, with the watchdog on, restarted the App about every 2.5 minutes for ever. The App's health check now follows the port set under Configuration → Network. This has affected a custom port since 1.0.18, when the image started inheriting upstream's health check. Fixes #52. Fixes [#52](https://github.com/giorgioparri/homeassistant-addons/issues/52).
+
+  Nothing to do on your side — update and the App turns healthy. If you switched the watchdog off to stop the restarts, you can switch it back on.
+
 ## [1.0.24] - 2026-10-02
 
 ### Changed
@@ -264,7 +271,8 @@ Shortly after the 1.0.11 release, a bug was found in the automatic timezone dete
 - Configurable bind address for multi-IP setups (e.g. IP alias to avoid port conflicts)
 - Configurable timezone and log level
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.24...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.25...HEAD
+[1.0.25]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.24...bambuddy-v1.0.25
 [1.0.24]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.23...bambuddy-v1.0.24
 [1.0.23]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.22...bambuddy-v1.0.23
 [1.0.22]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.21...bambuddy-v1.0.22

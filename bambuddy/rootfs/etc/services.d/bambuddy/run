@@ -195,6 +195,15 @@ if ! bashio::var.has_value "${PORT}"; then
     PORT=8000
 fi
 export PORT
+
+# The Dockerfile's HEALTHCHECK runs in its own `docker exec`, which sees the
+# image's ENV and not what this s6 service exports, so it cannot read $PORT.
+# Hand it the port through a file instead; without this it probes upstream's
+# default 8000, which under host networking is somebody else's service.
+if ! echo "${PORT}" > /run/bambuddy.port; then
+    bashio::log.warning "Could not write /run/bambuddy.port; the container health check will fail."
+fi
+
 export PYTHONPATH=/app
 export PYTHONUNBUFFERED=1
 
