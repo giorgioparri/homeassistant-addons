@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.12] - 2026-11-06
+
+### Changed
+- Updated the slicer API wrapper to the version BamBuddy 1.3.0 asks for. The Slice dialog now also lists the filaments Bambu Studio keeps in brand subfolders, such as SUNLU: 1928 Bambu filaments instead of 1792. Each of these presets is listed for the printer models it was written for, so a brand may not appear for yours. Update this App when you update BamBuddy to 1.3.0 ([maziggy/bambuddy#3234](https://github.com/maziggy/bambuddy/issues/3234)).
+- **The automatic filament pick can change.** When several presets fit a plate equally well, the wrapper now lists real filaments before support materials and Bambu Lab's own first, so some plates get a different pick, for example Generic PA instead of Bambu Support For PA/PET. Check the filament in the Slice dialog if you relied on the old pick.
+
+### Fixed
+- Your own presets based on a filament in a brand subfolder now slice with all the settings they inherit, and a printer preset saved under a name of its own now slices ([maziggy/bambuddy#3234](https://github.com/maziggy/bambuddy/issues/3234), [maziggy/bambuddy#3250](https://github.com/maziggy/bambuddy/issues/3250)).
+
 ## [0.1.11] - 2026-09-29
 
 ### Added
@@ -45,7 +54,8 @@ Bump Bambu Studio from 02.07.01.62 to 02.08.02.60.
 ## [0.1.3]
 - Fork from https://github.com/griffinmartin/ha-app-bambu-studio-api.
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.11...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.12...HEAD
+[0.1.12]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.11...bambu-studio-api-v0.1.12
 [0.1.11]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.10...bambu-studio-api-v0.1.11
 [0.1.10]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.9...bambu-studio-api-v0.1.10
 [0.1.9]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.8...bambu-studio-api-v0.1.9

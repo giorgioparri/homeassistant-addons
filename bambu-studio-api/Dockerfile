@@ -3,9 +3,9 @@
 # Bambu Studio API – Home Assistant add-on.
 #
 # Two-stage build:
-#   1) `build`: clone upstream maziggy/orca-slicer-api (bambuddy/profile-resolver
-#      branch), download the Bambu Studio AppImage, extract it, and `npm run
-#      build` the Node wrapper.
+#   1) `build`: fetch upstream maziggy/orca-slicer-api at the commit pinned in
+#      UPSTREAM_SHA (bambuddy/profile-resolver branch), download the Bambu Studio
+#      AppImage, extract it, and `npm run build` the Node wrapper.
 #   2) Runtime: Ubuntu 22.04 + Node 22 + s6-overlay + bashio. Stays on 22.04
 #      because BambuStudio links against libwebkit2gtk-4.0, which Ubuntu 24.04
 #      no longer ships.
@@ -13,13 +13,16 @@
 # amd64 only: BambuLab does not publish an official ARM64 AppImage and the
 # upstream Dockerfile.bambu-studio fails fast on arm64 — we mirror that here.
 ARG BAMBU_VERSION=02.08.02.61
-ARG UPSTREAM_REF=bambuddy/profile-resolver
+# Pinned by commit, not by branch name: the builder shares a GHA layer cache, so
+# cloning a moving branch could reuse a stale layer and ship the old wrapper.
+# Changing this value is what invalidates that layer.
+ARG UPSTREAM_SHA=4c05506e40a0057db33234837db164143cbf3ad3
 # ---------------------------------------------------------------------------
 # Stage 1: build the Node wrapper + extract the Bambu Studio AppImage
 # ---------------------------------------------------------------------------
 FROM node:22-bookworm AS build
 ARG BAMBU_VERSION
-ARG UPSTREAM_REF
+ARG UPSTREAM_SHA
 ARG TARGETARCH
 RUN if [ "$TARGETARCH" = "arm64" ]; then \
         echo "ARM64 not supported — BambuStudio has no official ARM64 AppImage."; \
@@ -30,8 +33,10 @@ RUN apt-get update \
         git curl ca-certificates jq \
     && rm -rf /var/lib/apt/lists/*
 WORKDIR /src
-RUN git clone --depth 1 --branch "${UPSTREAM_REF}" \
-        https://github.com/maziggy/orca-slicer-api.git .
+RUN git init -q . \
+    && git remote add origin https://github.com/maziggy/orca-slicer-api.git \
+    && git fetch -q --depth 1 origin "${UPSTREAM_SHA}" \
+    && git checkout -q FETCH_HEAD
 RUN echo "Downloading BambuStudio v${BAMBU_VERSION}..." \
     && APPIMAGE_URL=$(curl -s "https://api.github.com/repos/bambulab/BambuStudio/releases/tags/v${BAMBU_VERSION}" \
         | jq -r '.assets[].browser_download_url' \
