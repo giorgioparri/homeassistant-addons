@@ -56,7 +56,7 @@ Entries are sanitised before use: a `..` segment is rejected outright, a redunda
 
 ## External PostgreSQL database (`database_url`)
 
-By default BamBuddy stores everything in a SQLite database under the App's persistent data volume. If you'd rather point it at an external PostgreSQL server, set `database_url` (e.g. `postgresql+asyncpg://bambuddy:yourpassword@db-host:5432/bambuddy`). BamBuddy creates all tables automatically on first startup; backup/restore then uses `pg_dump`/`pg_restore` instead of a file copy.
+By default BamBuddy stores everything in a SQLite database under the App's persistent data volume. If you'd rather point it at an external PostgreSQL server, set `database_url` (e.g. `postgresql+asyncpg://bambuddy:yourpassword@db-host:5432/bambuddy`). PostgreSQL 13 or newer is required. BamBuddy creates all tables automatically on first startup; backup/restore then uses `pg_dump`/`pg_restore` instead of a file copy.
 
 ---
 
@@ -216,11 +216,11 @@ Once connected to the VPN, your remote device is on the LAN and can reach BamBud
 ### Step 2 — Download the CA certificate
 
 1. In BamBuddy go to **Settings → Virtual Printer**.
-2. Download the **CA Certificate** (`bbl_ca.crt`).
+2. Download the **CA Certificate** (`bambuddy-virtual-printer-ca.crt`).
 
 ### Step 3 — Add the certificate to BambuStudio
 
-Append the contents of `bbl_ca.crt` to the slicer certificate file.
+Append the contents of `bambuddy-virtual-printer-ca.crt` to the slicer certificate file.
 
 **Standard installation:**
 ```
