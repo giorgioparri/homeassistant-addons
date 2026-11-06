@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [0.1.12] - 2026-11-06
 
 ### Changed
-- Updated the slicer API wrapper to the version BamBuddy 1.3.0 asks for. The Slice dialog now also lists the filaments Bambu Studio keeps in brand subfolders, such as COEX and SUNLU: 1928 Bambu filaments instead of 1792. Update this App when you update BamBuddy to 1.3.0 ([maziggy/bambuddy#3234](https://github.com/maziggy/bambuddy/issues/3234)).
+- Updated the slicer API wrapper to the version BamBuddy 1.3.0 asks for. The Slice dialog now also lists the filaments Bambu Studio keeps in brand subfolders, such as SUNLU: 1928 Bambu filaments instead of 1792. Each of these presets is listed for the printer models it was written for, so a brand may not appear for yours. Update this App when you update BamBuddy to 1.3.0 ([maziggy/bambuddy#3234](https://github.com/maziggy/bambuddy/issues/3234)).
 - **The automatic filament pick can change.** When several presets fit a plate equally well, the wrapper now lists real filaments before support materials and Bambu Lab's own first, so some plates get a different pick, for example Generic PA instead of Bambu Support For PA/PET. Check the filament in the Slice dialog if you relied on the old pick.
 
 ### Fixed
