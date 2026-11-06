@@ -5,6 +5,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-06
+
+### Changed
+- Updated BamBuddy to 1.3.0 (from 1.2.5.7), the largest upstream release so far: 40 new features, 11 changes, 320 fixes. An archive now holds every print of a file, with each print's own photos, timelapse, note and outcome. Groups can be limited to some printers, and jobs can wait for staff review. Failure detection gains OctoEverywhere, notifications gain Notify! and Gotify, and the electricity price can come from a Home Assistant sensor, costed hour by hour. The interface is available in Polish.
+
+  Full upstream release notes: https://github.com/maziggy/bambuddy/releases/tag/v1.3.0
+
+- **Back up before updating.** On SQLite, the first start converts the database once so ids are never reused and old leftovers are repaired; this is automatic, and new tables and columns are added as usual. Keep the backup the Supervisor offers: it is the way back to 1.0.25, because going back without it has only been tried as far as the database starting up.
+- **Update the Bambu Studio API App too, to 0.1.12 or later,** if you slice from BamBuddy. It brings the new filament lists and preset fixes. Some plates get a different automatic filament pick, so check the Slice dialog.
+- **The plate now moves after a print for the finish photo.** Restore plate for finish photo is on by default and now really moves the bed. Turn it off under Settings → General to keep the old behaviour.
+- **Queued jobs wait instead of printing on the wrong filament.** A job whose filament cannot be matched to a loaded tray is held for a manual start; Start offers Print Anyway. With Force color match, a job waits for a spool of the exact colour and variant. A printer that refuses the upload (SD card, USB, access code) no longer fails the job: it stays queued and sends Job Waiting instead of Job Failed, so automations listening for Job Failed will see fewer of them.
+- **Costs and counts change, including for past prints.** Archives count prints rather than files: printing a File Manager or project file again adds a run to its archive instead of a new one, and aborted prints count as failed. Total consumption and Recalculate Costs can give different figures. The CSV and Excel export has one row per print with new columns, so spreadsheets built on the old layout need checking.
+- **Users and groups.** New permissions are granted once on upgrade, so nothing changes until you remove them, and permissions you take away no longer come back on restart. Users who see only their own files now see only their own folders: a folder whose files all belong to one user becomes theirs, and every other existing folder is shared with everyone.
+- **Home Assistant, API and MQTT.** Dates in archive and statistics filters are now days in the App's timezone, which it detects from Home Assistant, instead of UTC. The MQTT relay adds `offline`, `online` and `filament/low` topics, publishes `smart_plugs/energy` once a minute, and `maintenance/alert` now carries real values and a unit field. Check templates that read them. `POST /printers/test` and three other debug or legacy routes are gone, along with the global virtual printer settings; use `PUT /virtual-printers/{id}`.
+- **Smaller moves.** The sidebar's MakerWorld entry is now Model Sources, and camera tokens and the Streaming Overlay builder moved to a new Camera settings tab; old links still work. An edited Password Reset email template needs rewording, since `{password}` and `{login_url}` are gone. An external database must be PostgreSQL 13 or newer.
+
+### Fixed
+- **Stopping the App could wait for a forced kill while a camera was open.** BamBuddy waited for ever on requests in progress, and a camera stream never finishes, so the stop could end in a kill instead of a clean shutdown. The App now gives open requests 5 seconds, as upstream's own image does. Nothing to do on your side.
+
 ## [1.0.25] - 2026-10-05
 
 ### Fixed
@@ -271,7 +290,8 @@ Shortly after the 1.0.11 release, a bug was found in the automatic timezone dete
 - Configurable bind address for multi-IP setups (e.g. IP alias to avoid port conflicts)
 - Configurable timezone and log level
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.25...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.1.0...HEAD
+[1.1.0]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.25...bambuddy-v1.1.0
 [1.0.25]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.24...bambuddy-v1.0.25
 [1.0.24]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.23...bambuddy-v1.0.24
 [1.0.23]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.22...bambuddy-v1.0.23

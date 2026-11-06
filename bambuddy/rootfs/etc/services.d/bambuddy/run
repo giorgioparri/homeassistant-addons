@@ -222,7 +222,11 @@ fi
 bashio::log.info "Starting BamBuddy on port ${PORT}..."
 
 cd /app || bashio::exit.nok "Cannot cd to /app"
+# --timeout-graceful-shutdown mirrors upstream's CMD: uvicorn otherwise waits for
+# ever on in-flight requests, and an MJPEG camera stream never completes, so one
+# open camera would hold the stop until it ends in SIGKILL.
 exec python3 -m uvicorn backend.app.main:app \
     --host "${BIND_HOST}" \
     --port "${PORT}" \
-    --loop asyncio
+    --loop asyncio \
+    --timeout-graceful-shutdown "${UVICORN_TIMEOUT_GRACEFUL_SHUTDOWN:-5}"
