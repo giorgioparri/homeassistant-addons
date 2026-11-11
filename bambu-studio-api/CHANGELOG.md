@@ -5,6 +5,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.13] - 2026-11-11
+
+### Changed
+- Updated Bambu Studio to 02.09.01.70 (from 02.08.02.61) and the slicer API wrapper to the version BamBuddy 1.3.1 asks for. Bambu Studio 02.09 adds the printer presets for the Bambu Lab H3C. Update this App when you update BamBuddy to 1.3.1; older versions of this App keep working with it, but cannot slice for the H3C ([maziggy/bambuddy#3442](https://github.com/maziggy/bambuddy/issues/3442)).
+- The image now always uses Bambu Studio's Ubuntu 22.04 build, the one upstream's own image uses. Before, it took whichever Ubuntu build was listed first.
+
+### Fixed
+- Bambu Studio 02.09 renamed its Linux download, so the daily check for a new Bambu Studio release no longer found it and this update never arrived on its own. The check, and the image build, now recognise both the old and the new name.
+
 ## [0.1.12] - 2026-11-06
 
 ### Changed
@@ -54,7 +63,8 @@ Bump Bambu Studio from 02.07.01.62 to 02.08.02.60.
 ## [0.1.3]
 - Fork from https://github.com/griffinmartin/ha-app-bambu-studio-api.
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.12...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.13...HEAD
+[0.1.13]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.12...bambu-studio-api-v0.1.13
 [0.1.12]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.11...bambu-studio-api-v0.1.12
 [0.1.11]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.10...bambu-studio-api-v0.1.11
 [0.1.10]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.9...bambu-studio-api-v0.1.10
