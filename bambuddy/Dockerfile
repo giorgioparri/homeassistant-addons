@@ -18,7 +18,7 @@
 # On the upstream image OpenCV comes from the manylinux wheel upstream itself
 # installs and tests, and there is no dependency resolution left for us to get
 # wrong.
-ARG BAMBUDDY_VERSION=1.3.0
+ARG BAMBUDDY_VERSION=1.3.1
 FROM ghcr.io/maziggy/bambuddy:${BAMBUDDY_VERSION}
 
 ARG S6_OVERLAY_VERSION=3.2.0.2

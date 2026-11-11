@@ -5,6 +5,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.1.1] - 2026-11-11
+
+### Changed
+- Updated BamBuddy to 1.3.1 (from 1.3.0): 5 new features, 4 changes, 22 fixes. The headline for this App is a fix for SQLite, the database it uses by default: closing a camera view could leave a CPU core at 100% and make pages such as Projects and Spool Inventory very slow until a restart. Also new: support for the Bambu Lab H3C, WLED lights that show each printer's status, several File Manager files queued as separate jobs, and temperatures and controls on Cam Wall tiles. New tables and columns are added automatically; there are no API changes.
+
+  Full upstream release notes: https://github.com/maziggy/bambuddy/releases/tag/v1.3.1
+
+- **Update the Bambu Studio API App too, to 0.1.13 or later,** if you want to slice for the H3C. Older versions keep working for every other printer.
+- **Printer error notifications have new titles.** USB, network and file errors now read "System Error" instead of "Nozzle/Extruder Error", camera faults "Camera Error", and an A1 mini's AMS Lite runouts "AMS Lite Error". Home Assistant automations or notification filters that match on the old titles need updating. Errors the printer keeps in its list are no longer sent again after every restart of the App.
+- **"Any model" jobs go to the printer with the fewest print hours** on its Maintenance counter, instead of the first free printer of that model. With more than one printer of a model, jobs will land on different printers than before.
+
 ## [1.1.0] - 2026-11-06
 
 ### Changed
@@ -290,7 +301,8 @@ Shortly after the 1.0.11 release, a bug was found in the automatic timezone dete
 - Configurable bind address for multi-IP setups (e.g. IP alias to avoid port conflicts)
 - Configurable timezone and log level
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.1.0...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.1.1...HEAD
+[1.1.1]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.1.0...bambuddy-v1.1.1
 [1.1.0]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.25...bambuddy-v1.1.0
 [1.0.25]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.24...bambuddy-v1.0.25
 [1.0.24]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.23...bambuddy-v1.0.24
