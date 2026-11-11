@@ -12,11 +12,11 @@
 #
 # amd64 only: BambuLab does not publish an official ARM64 AppImage and the
 # upstream Dockerfile.bambu-studio fails fast on arm64 — we mirror that here.
-ARG BAMBU_VERSION=02.08.02.61
+ARG BAMBU_VERSION=02.09.01.70
 # Pinned by commit, not by branch name: the builder shares a GHA layer cache, so
 # cloning a moving branch could reuse a stale layer and ship the old wrapper.
 # Changing this value is what invalidates that layer.
-ARG UPSTREAM_SHA=4c05506e40a0057db33234837db164143cbf3ad3
+ARG UPSTREAM_SHA=2fa759a23f872156d32e205349b17a5c65342926
 # ---------------------------------------------------------------------------
 # Stage 1: build the Node wrapper + extract the Bambu Studio AppImage
 # ---------------------------------------------------------------------------
@@ -37,14 +37,16 @@ RUN git init -q . \
     && git remote add origin https://github.com/maziggy/orca-slicer-api.git \
     && git fetch -q --depth 1 origin "${UPSTREAM_SHA}" \
     && git checkout -q FETCH_HEAD
+# Ubuntu 22.04 build, matched by name: 02.09 renamed the asset from
+# BambuStudio_ubuntu-22.04-* / BambuStudio_ubuntu22.04-* to BambuStudio_ubu22_*.
+# Same pattern as upstream's Dockerfile.bambu-studio.
 RUN echo "Downloading BambuStudio v${BAMBU_VERSION}..." \
     && APPIMAGE_URL=$(curl -s "https://api.github.com/repos/bambulab/BambuStudio/releases/tags/v${BAMBU_VERSION}" \
         | jq -r '.assets[].browser_download_url' \
-        | grep -i 'ubuntu' \
-        | grep '\.AppImage$' \
+        | grep -E '/BambuStudio_ubu(ntu)?-?22(\.04)?[-_][^/]*\.AppImage$' \
         | head -n1) \
     && if [ -z "${APPIMAGE_URL}" ]; then \
-        echo "ERROR: No Linux AppImage found for v${BAMBU_VERSION}. Check https://github.com/bambulab/BambuStudio/releases/tag/v${BAMBU_VERSION}"; \
+        echo "ERROR: No Ubuntu 22.04 AppImage found for v${BAMBU_VERSION}. Check https://github.com/bambulab/BambuStudio/releases/tag/v${BAMBU_VERSION}"; \
         exit 1; \
     fi \
     && echo "URL: ${APPIMAGE_URL}" \

@@ -22,12 +22,14 @@ jobs:
           LATEST=$(curl -s https://api.github.com/repos/bambulab/BambuStudio/releases/latest \
             | jq -r '.tag_name' | sed 's/^v//')
           echo "Latest version: ${LATEST}"
+          # Same pattern as bambu-studio-api/Dockerfile: 02.09 renamed the asset
+          # from BambuStudio_ubuntu-22.04-* to BambuStudio_ubu22_*.
           HAS_APPIMAGE=$(curl -s "https://api.github.com/repos/bambulab/BambuStudio/releases/tags/v${LATEST}" \
             | jq -r '.assets[].browser_download_url' \
-            | grep -i 'ubuntu' | grep '\.AppImage$' | head -n1)
+            | grep -E '/BambuStudio_ubu(ntu)?-?22(\.04)?[-_][^/]*\.AppImage$' | head -n1)
           echo "AppImage URL found: '${HAS_APPIMAGE}'"
           if [ -z "$HAS_APPIMAGE" ]; then
-            echo "No Linux AppImage for v${LATEST}, skipping."
+            echo "No Ubuntu 22.04 AppImage for v${LATEST}, skipping."
             echo "version=" >> $GITHUB_OUTPUT
           else
             echo "version=$LATEST" >> $GITHUB_OUTPUT
