@@ -5,6 +5,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [1.1.2] - 2026-11-20
+
+### Changed
+- Updated BamBuddy to 1.3.2 (from 1.3.1): 4 new features, 3 changes, 29 fixes. The headline fix is for anyone signed in to Bambu Cloud: the Slice dialog showed "Failed to load presets" and offered no presets at all, local ones included, and the Profiles page's cloud list failed to load. Also new: a maintenance log with a comment on every reset, and a choice of which printer an "Any model" job takes. A slice sent again from the slicer now adds a print to its archive instead of a new one. New tables and columns are added automatically; there are no breaking API changes.
+
+  Full upstream release notes: https://github.com/maziggy/bambuddy/releases/tag/v.1.3.2
+
+- **More printer status for Home Assistant over MQTT.** If you use BamBuddy's MQTT relay, `bambuddy/printers/{serial}/status` now carries `door_open`, `active_extruder`, `tray_now`, `ams`, `vt_tray` and `hms_errors`, so automations no longer need to poll the REST API for them. If BamBuddy stops unexpectedly, the broker now publishes `{"status": "offline"}` on `bambuddy/status`.
+- **Admins are decided by the Administrators group.** On the first start after the update, a user who still has the old admin role but is not in Administrators is no longer an admin. If such users are the only admins, they are added to Administrators instead.
+- **MQTT smart plugs with a daily energy counter** (Tasmota's `ENERGY.Today`) lost a print's energy across midnight. Set the new Energy JSON Path (lifetime) on the plug (`ENERGY.Total` on Tasmota) to fix it; without it nothing changes. Plugs set to monitor only are no longer switched by automation.
+- **AMS slots set to a support filament** before this update keep PLA (or PA) as their type until you configure them again.
+- **Update the Bambu Studio API App to 0.1.14** for the security fix in its wrapper. BamBuddy 1.3.2 works with 0.1.13 as well.
+
 ## [1.1.1] - 2026-11-11
 
 ### Changed
@@ -301,7 +314,8 @@ Shortly after the 1.0.11 release, a bug was found in the automatic timezone dete
 - Configurable bind address for multi-IP setups (e.g. IP alias to avoid port conflicts)
 - Configurable timezone and log level
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.1.1...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.1.2...HEAD
+[1.1.2]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.1.1...bambuddy-v1.1.2
 [1.1.1]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.1.0...bambuddy-v1.1.1
 [1.1.0]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.25...bambuddy-v1.1.0
 [1.0.25]: https://github.com/giorgioparri/homeassistant-addons/compare/bambuddy-v1.0.24...bambuddy-v1.0.25
