@@ -5,6 +5,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.14] - 2026-11-20
+
+### Changed
+- Updated the slicer API wrapper to the version BamBuddy 1.3.2 ships. It carries a security fix: a preset bundle identifier that is not a valid one is now refused before it is used as a path on disk. The API port is reachable from your network, so this is worth taking even if slicing works for you today.
+- The image no longer carries the wrapper's build and test tools (TypeScript, ESLint, Vitest, Vite), which the running App never uses, and the security advisories that came with them. It is about 40 MB smaller. Nothing changes in how the App works.
+
 ## [0.1.13] - 2026-11-11
 
 ### Changed
@@ -63,7 +69,8 @@ Bump Bambu Studio from 02.07.01.62 to 02.08.02.60.
 ## [0.1.3]
 - Fork from https://github.com/griffinmartin/ha-app-bambu-studio-api.
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.13...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.14...HEAD
+[0.1.14]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.13...bambu-studio-api-v0.1.14
 [0.1.13]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.12...bambu-studio-api-v0.1.13
 [0.1.12]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.11...bambu-studio-api-v0.1.12
 [0.1.11]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.10...bambu-studio-api-v0.1.11
