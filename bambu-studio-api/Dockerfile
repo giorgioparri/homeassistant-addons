@@ -16,7 +16,7 @@ ARG BAMBU_VERSION=02.09.01.70
 # Pinned by commit, not by branch name: the builder shares a GHA layer cache, so
 # cloning a moving branch could reuse a stale layer and ship the old wrapper.
 # Changing this value is what invalidates that layer.
-ARG UPSTREAM_SHA=2fa759a23f872156d32e205349b17a5c65342926
+ARG UPSTREAM_SHA=0bb2332e44d2454df4d643424cbb0d19b4883581
 # ---------------------------------------------------------------------------
 # Stage 1: build the Node wrapper + extract the Bambu Studio AppImage
 # ---------------------------------------------------------------------------
@@ -54,7 +54,11 @@ RUN echo "Downloading BambuStudio v${BAMBU_VERSION}..." \
     && chmod +x bambu.AppImage \
     && ./bambu.AppImage --appimage-extract \
     && rm bambu.AppImage
-RUN npm ci && npm run build
+# The runtime stage copies node_modules as it is, so drop the build, lint and
+# test toolchain (tsc, eslint, vitest, vite) once the build is done: the API
+# runs on the production dependencies alone, as in upstream's image
+# (maziggy/bambuddy#3530).
+RUN npm ci && npm run build && npm prune --omit=dev
 # ---------------------------------------------------------------------------
 # Stage 2: runtime image (Ubuntu 24.04 + Node 22 + s6-overlay + bashio)
 # ---------------------------------------------------------------------------
