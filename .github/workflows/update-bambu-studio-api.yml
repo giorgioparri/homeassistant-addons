@@ -99,7 +99,7 @@ jobs:
           body: |
             Automated update: bumps `BAMBU_VERSION` in `bambu-studio-api/Dockerfile`
             and `version` in `bambu-studio-api/config.yaml` to match the latest
-            [BambuStudio release](https://github.com/bambulab/BambuStudio/releases/tag/${{ steps.upstream.outputs.version }}).
+            [BambuStudio release](https://github.com/bambulab/BambuStudio/releases/tag/v${{ steps.upstream.outputs.version }}).
 
             Merge this PR to make the update available in your HA App repository.
           labels: automated, dependencies
