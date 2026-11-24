@@ -12,7 +12,7 @@
 #
 # amd64 only: BambuLab does not publish an official ARM64 AppImage and the
 # upstream Dockerfile.bambu-studio fails fast on arm64 — we mirror that here.
-ARG BAMBU_VERSION=02.09.01.70
+ARG BAMBU_VERSION=02.09.02.62
 # Pinned by commit, not by branch name: the builder shares a GHA layer cache, so
 # cloning a moving branch could reuse a stale layer and ship the old wrapper.
 # Changing this value is what invalidates that layer.

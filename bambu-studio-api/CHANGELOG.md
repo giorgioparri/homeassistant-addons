@@ -5,6 +5,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [0.1.15] - 2026-11-24
+- Bump Bambu Studio from 02.09.01.70 to 02.09.02.62.
+
 ## [0.1.14] - 2026-11-20
 
 ### Changed
@@ -69,7 +72,8 @@ Bump Bambu Studio from 02.07.01.62 to 02.08.02.60.
 ## [0.1.3]
 - Fork from https://github.com/griffinmartin/ha-app-bambu-studio-api.
 
-[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.14...HEAD
+[Unreleased]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.15...HEAD
+[0.1.15]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.14...bambu-studio-api-v0.1.15
 [0.1.14]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.13...bambu-studio-api-v0.1.14
 [0.1.13]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.12...bambu-studio-api-v0.1.13
 [0.1.12]: https://github.com/giorgioparri/homeassistant-addons/compare/bambu-studio-api-v0.1.11...bambu-studio-api-v0.1.12
