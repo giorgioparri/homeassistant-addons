@@ -12,10 +12,10 @@ jobs:
     name: InfluxDB smoke
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
       # amd64 only here: GitHub-hosted runners are amd64, and running a full
       # InfluxDB service under QEMU aarch64 emulation in CI is slow and
@@ -23,7 +23,7 @@ jobs:
       # by InfluxDB Builder (influxdb-build.yml), which builds and pushes
       # both architectures.
       - name: Build App image (amd64)
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: ./influxdb
           file: ./influxdb/Dockerfile
